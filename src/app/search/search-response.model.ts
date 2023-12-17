@@ -1,4 +1,4 @@
-import { SearchItem } from './search-item';
+import { SearchItem } from './search-item.model';
 
 export interface SearchResponse {
   TODO: string;
