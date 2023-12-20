@@ -1,7 +1,8 @@
 {
+  "files.associations": { "*.css": "tailwindcss" },
   "angular-schematics.schematicsDefaultOptions": {
     "angular-*": {
-      "style": "scss",
+      "style": "css",
       "externalTemplate": true
     },
     "angular-component": {

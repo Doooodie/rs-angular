@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { PrimeNGConfig } from 'primeng/api';
 import { HeaderComponent } from './header/header.component';
 
 @Component({
@@ -9,12 +8,5 @@ import { HeaderComponent } from './header/header.component';
   standalone: true,
   imports: [CommonModule, RouterOutlet, HeaderComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
-  constructor(private primengConfig: PrimeNGConfig) {}
-
-  ngOnInit() {
-    this.primengConfig.ripple = true;
-  }
-}
+export class AppComponent {}
