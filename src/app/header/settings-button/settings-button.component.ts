@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-profile',
+  selector: 'app-settings-button',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './profile.component.html',
+  templateUrl: './settings-button.component.html',
 })
-export class ProfileComponent {}
+export class SettingsButtonComponent {}
