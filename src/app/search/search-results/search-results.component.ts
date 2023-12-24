@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SearchItemComponent } from '../search-item/search-item.component';
+import { SearchResponse } from '../search-response.model';
+import { SearchItem } from '../search-item.model';
+import response from '../../../assets/response.json';
 
 @Component({
   selector: 'app-search-results',
@@ -8,4 +11,15 @@ import { SearchItemComponent } from '../search-item/search-item.component';
   imports: [CommonModule, SearchItemComponent],
   templateUrl: './search-results.component.html',
 })
-export class SearchResultsComponent {}
+export class SearchResultsComponent implements OnInit {
+  results: SearchResponse['items'] = [];
+
+  ngOnInit() {
+    const { items } = response;
+    this.results = items;
+  }
+
+  trackByItem(index: number, item: SearchItem) {
+    return +item.id;
+  }
+}

@@ -1,5 +1,5 @@
 export interface SearchItem {
-  kind: 'youtube#video';
+  kind: string;
   etag: string;
   id: string;
   snippet: Snippet;
@@ -13,7 +13,7 @@ export interface SearchItem {
 }
 
 export interface Snippet {
-  publishedAt: Date;
+  publishedAt: string;
   channelId: string;
   title: string;
   description: string;
@@ -32,8 +32,8 @@ export interface Snippet {
     title: string;
     description: string;
   };
-  defaultAudioLanguage: DefaultLanguage;
-  defaultLanguage?: DefaultLanguage;
+  defaultAudioLanguage: string;
+  defaultLanguage?: string;
 }
 
 export interface ThumbnailData {
@@ -42,8 +42,8 @@ export interface ThumbnailData {
   height: number;
 }
 
-export enum DefaultLanguage {
-  en = 'en',
-  us = 'en-US',
-  ru = 'ru',
+export interface StatisticsData {
+  name: string;
+  value: string;
+  className: string;
 }

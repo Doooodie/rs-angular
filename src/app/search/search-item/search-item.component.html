@@ -1,31 +1,17 @@
-<section
-  class="card card-compact w-64 border-b-4 border-success bg-neutral shadow-xl md:card-normal"
->
-  <figure>
-    <img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" />
-  </figure>
-  <div class="card-body items-center">
-    <h2 class="card-title">Kuji Podcast #21</h2>
-    <div class="flex flex-wrap justify-center gap-2">
-      <div class="badge badge-primary badge-outline gap-2 text-xs">
-        <i class="fa-solid fa-eye"></i>
-        <span>1000</span>
-      </div>
-      <div class="badge badge-primary badge-outline gap-2 text-xs">
-        <i class="fa-solid fa-heart"></i>
-        <span>680</span>
-      </div>
-      <div class="badge badge-primary badge-outline gap-2 text-xs">
-        <i class="fa-solid fa-heart-crack"></i>
-        <span>320</span>
-      </div>
-      <div class="badge badge-primary badge-outline gap-2 text-xs">
-        <i class="fa-solid fa-comments"></i>
-        <span>250</span>
-      </div>
-    </div>
-    <div class="card-actions">
-      <button class="btn btn-primary btn-sm md:btn-md">More...</button>
-    </div>
+<figure>
+  <img [src]="item.snippet.thumbnails.maxres.url" [alt]="item.snippet.title" />
+</figure>
+<div class="card-body items-center justify-around">
+  <h2 class="card-title text-sm sm:text-base">{{ item.snippet.title }}</h2>
+  <div class="divider"></div>
+  <div class="flex flex-wrap justify-center gap-2">
+    <app-counter
+      *ngFor="let statistics of statsArr; trackBy: trackByItem"
+      [statistics]="statistics"
+    ></app-counter>
   </div>
-</section>
+  <div class="divider"></div>
+  <div class="card-actions">
+    <button class="btn btn-primary btn-sm md:btn-md">More...</button>
+  </div>
+</div>

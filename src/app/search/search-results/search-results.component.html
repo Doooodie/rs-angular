@@ -1,14 +1,9 @@
 <main
-  class="container mx-auto my-8 grid grid-cols-1 justify-items-center gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
+  class="container mx-auto my-8 grid auto-rows-[500px] grid-cols-1 justify-items-center gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
 >
-  <app-search-item></app-search-item>
-  <app-search-item></app-search-item>
-  <app-search-item></app-search-item>
-  <app-search-item></app-search-item>
-
-  <app-search-item></app-search-item>
-  <app-search-item></app-search-item>
-  <app-search-item></app-search-item>
-  <app-search-item></app-search-item>
-  <app-search-item></app-search-item>
+  <app-search-item
+    class="card card-compact w-64 border-b-4 border-success bg-neutral shadow-xl md:card-normal"
+    *ngFor="let item of results; trackBy: trackByItem"
+    [item]="item"
+  ></app-search-item>
 </main>

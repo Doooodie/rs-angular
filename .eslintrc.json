@@ -8,17 +8,15 @@
         "project": ["tsconfig.json"]
       },
       "extends": [
-        "airbnb-base",
-        "airbnb-typescript/base",
         "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-type-checked",
+        "plugin:@typescript-eslint/stylistic-type-checked",
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
         "plugin:prettier/recommended"
       ],
       "rules": {
-        "import/prefer-default-export": "off",
-        "@typescript-eslint/no-explicit-any": "error",
+        "no-console": ["warn", { "allow": ["warn", "error"] }],
         "@angular-eslint/directive-selector": [
           "error",
           {
