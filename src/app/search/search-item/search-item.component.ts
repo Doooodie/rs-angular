@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { CounterComponent } from '../counter/counter.component';
 import { SearchItem, StatisticsData } from '../search-item.model';
@@ -6,7 +6,7 @@ import { SearchItem, StatisticsData } from '../search-item.model';
 @Component({
   selector: 'app-search-item',
   standalone: true,
-  imports: [CommonModule, CounterComponent],
+  imports: [CommonModule, CounterComponent, NgOptimizedImage],
   templateUrl: './search-item.component.html',
 })
 export class SearchItemComponent implements OnInit {
@@ -25,9 +25,5 @@ export class SearchItemComponent implements OnInit {
         className: classList[index],
       };
     });
-  }
-
-  trackByItem(index: number, item: StatisticsData) {
-    return +item.name;
   }
 }

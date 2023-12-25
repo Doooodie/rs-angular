@@ -1,17 +1,22 @@
 <figure>
-  <img [src]="item.snippet.thumbnails.maxres.url" [alt]="item.snippet.title" />
+  <img
+    width="1280"
+    height="720"
+    priority
+    [ngSrc]="item.snippet.thumbnails.maxres.url"
+    [alt]="item.snippet.title"
+  />
 </figure>
 <div class="card-body items-center justify-around">
   <h2 class="card-title text-sm sm:text-base">{{ item.snippet.title }}</h2>
   <div class="divider"></div>
   <div class="flex flex-wrap justify-center gap-2">
-    <app-counter
-      *ngFor="let statistics of statsArr; trackBy: trackByItem"
-      [statistics]="statistics"
-    ></app-counter>
+    @for (statistics of statsArr; track statistics.name) {
+      <app-counter [statistics]="statistics" />
+    }
   </div>
   <div class="divider"></div>
   <div class="card-actions">
-    <button class="btn btn-primary btn-sm md:btn-md">More...</button>
+    <button type="button" class="btn btn-primary btn-sm md:btn-md">More...</button>
   </div>
 </div>
