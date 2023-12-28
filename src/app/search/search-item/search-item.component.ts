@@ -1,12 +1,13 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { CounterComponent } from '../counter/counter.component';
+import { CustomButtonComponent } from '../../custom-button/custom-button.component';
 import { SearchItem, StatisticsData } from '../search-item.model';
 
 @Component({
   selector: 'app-search-item',
   standalone: true,
-  imports: [CommonModule, CounterComponent, NgOptimizedImage],
+  imports: [CommonModule, CounterComponent, NgOptimizedImage, CustomButtonComponent],
   templateUrl: './search-item.component.html',
 })
 export class SearchItemComponent implements OnInit {
