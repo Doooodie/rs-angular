@@ -19,4 +19,10 @@ import { SettingsOptionsComponent } from './settings-options/settings-options.co
   ],
   templateUrl: './header.component.html',
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  showFilters = false;
+
+  toggleFilters() {
+    this.showFilters = !this.showFilters;
+  }
+}

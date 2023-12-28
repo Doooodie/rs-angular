@@ -13,12 +13,14 @@
             <app-profile-button />
           </li>
           <li>
-            <app-settings-button />
+            <app-settings-button (click)="toggleFilters()" />
           </li>
         </ul>
       </div>
     </div>
 
-    <app-settings-options />
+    @if (showFilters) {
+      <app-settings-options />
+    }
   </div>
 </header>
