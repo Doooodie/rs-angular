@@ -4,6 +4,7 @@
   @for (item of results; track item.id) {
     <app-search-item
       class="card card-compact w-64 border-b-4 border-success bg-neutral shadow-xl md:card-normal"
+      [appChangeBorderColor]="item.snippet.publishedAt"
       [item]="item"
     />
   }
