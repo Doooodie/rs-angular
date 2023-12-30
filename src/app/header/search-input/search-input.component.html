@@ -1,4 +1,8 @@
 <div class="join">
-  <input type="text" class="input join-item input-bordered input-xs sm:input-sm md:input-md" />
-  <app-custom-button>Search</app-custom-button>
+  <input
+    type="text"
+    class="input join-item input-bordered input-xs sm:input-sm md:input-md"
+    (input)="changeQuery($event)"
+  />
+  <app-custom-button (click)="updateItems()">Search</app-custom-button>
 </div>

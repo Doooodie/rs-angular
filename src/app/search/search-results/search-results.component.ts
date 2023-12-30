@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ChangeBorderColorDirective } from 'app/search/directives/change-border-color.directive';
-import { SearchResponse } from 'app/search/models/search-response.model';
+import { SearchItem } from 'app/search/models/search-item.model';
 import { SearchItemComponent } from 'app/search/search-item/search-item.component';
-import response from 'assets/response.json';
+import { VideoItemsService } from 'app/shared/services/video-items.service';
 
 @Component({
   selector: 'app-search-results',
@@ -11,11 +11,8 @@ import response from 'assets/response.json';
   imports: [CommonModule, SearchItemComponent, ChangeBorderColorDirective],
   templateUrl: './search-results.component.html',
 })
-export class SearchResultsComponent implements OnInit {
-  results: SearchResponse['items'] = [];
+export class SearchResultsComponent {
+  constructor(private videoItemsService: VideoItemsService) {}
 
-  ngOnInit() {
-    const { items } = response;
-    this.results = items;
-  }
+  items: SearchItem[] = this.videoItemsService.items;
 }
