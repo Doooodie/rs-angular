@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { SearchItemComponent } from '../search-item/search-item.component';
-import { SearchResponse } from '../search-response.model';
-import { ChangeBorderColorDirective } from '../change-border-color.directive';
-import response from '../../../assets/response.json';
+import { ChangeBorderColorDirective } from 'app/search/directives/change-border-color.directive';
+import { SearchResponse } from 'app/search/models/search-response.model';
+import { SearchItemComponent } from 'app/search/search-item/search-item.component';
+import response from 'assets/response.json';
 
 @Component({
   selector: 'app-search-results',

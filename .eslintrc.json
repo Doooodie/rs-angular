@@ -7,6 +7,11 @@
       "parserOptions": {
         "project": ["tsconfig.json"]
       },
+      "settings": {
+        "import/resolver": {
+          "typescript": true
+        }
+      },
       "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended-type-checked",
@@ -15,8 +20,37 @@
         "plugin:@angular-eslint/template/process-inline-templates",
         "plugin:prettier/recommended"
       ],
+      "plugins": ["no-relative-import-paths", "simple-import-sort", "import"],
       "rules": {
         "no-console": ["warn", { "allow": ["warn", "error"] }],
+
+        "simple-import-sort/exports": "error",
+        "import/no-named-as-default": "error",
+        "import/first": "error",
+        "import/no-duplicates": "error",
+        "import/newline-after-import": "error",
+        "import/no-dynamic-require": "error",
+        "import/no-webpack-loader-syntax": "error",
+        "import/no-named-default": "error",
+        "import/no-anonymous-default-export": "error",
+        "import/exports-last": "error",
+        "import/no-self-import": "error",
+        "import/no-cycle": ["error", { "maxDepth": "∞" }],
+        "import/no-useless-path-segments": ["error", { "commonjs": true }],
+        "import/no-import-module-exports": "error",
+        "import/no-relative-packages": "error",
+        "import/no-empty-named-blocks": "error",
+
+        "simple-import-sort/imports": [
+          "error",
+          { "groups": [["^\\u0000", "^node:", "^@?\\w", "^", "^\\."]] }
+        ],
+
+        "no-relative-import-paths/no-relative-import-paths": [
+          "error",
+          { "allowSameFolder": true, "rootDir": "src" }
+        ],
+
         "@angular-eslint/directive-selector": [
           "error",
           {
