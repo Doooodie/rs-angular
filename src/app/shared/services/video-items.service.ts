@@ -7,6 +7,14 @@ import mockedData from 'assets/response.json';
 export class VideoItemsService {
   response: SearchResponse = mockedData;
   items: SearchItem[] = [];
+  sortStatus = {
+    byDate: false,
+    byCount: false,
+  };
+
+  clearItems() {
+    return this.items.splice(0);
+  }
 
   findItems(query: string) {
     if (query) {
@@ -16,7 +24,51 @@ export class VideoItemsService {
 
       this.items.push(...filtered);
     } else {
-      this.items.splice(0);
+      this.clearItems();
     }
+  }
+
+  sortItems(sortBy: keyof typeof this.sortStatus) {
+    const itemsCopy = this.clearItems();
+
+    itemsCopy.sort((firstItem, secondItem) => {
+      let result = 0;
+
+      if (sortBy === 'byDate') {
+        const firstItemDate = Date.parse(firstItem.snippet.publishedAt);
+        const secondItemDate = Date.parse(secondItem.snippet.publishedAt);
+
+        if (this.sortStatus.byDate) {
+          result = firstItemDate - secondItemDate;
+        } else {
+          result = secondItemDate - firstItemDate;
+        }
+      }
+
+      if (sortBy === 'byCount') {
+        const firstItemCount = +firstItem.statistics.viewCount;
+        const secondItemCount = +secondItem.statistics.viewCount;
+
+        if (this.sortStatus.byCount) {
+          result = firstItemCount - secondItemCount;
+        } else {
+          result = secondItemCount - firstItemCount;
+        }
+      }
+
+      return result;
+    });
+
+    if (sortBy === 'byDate') {
+      this.sortStatus.byDate = !this.sortStatus.byDate;
+      this.sortStatus.byCount = false;
+    }
+
+    if (sortBy === 'byCount') {
+      this.sortStatus.byCount = !this.sortStatus.byCount;
+      this.sortStatus.byDate = false;
+    }
+
+    this.items.push(...itemsCopy);
   }
 }

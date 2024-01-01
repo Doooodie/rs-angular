@@ -1,7 +1,23 @@
 <div class="navbar flex-wrap justify-center gap-3">
   <span>Sorting by:</span>
-  <span class="link-hover link link-primary">date</span>
-  <span class="link-hover link link-primary">count of views</span>
+  <span
+    role="button"
+    tabindex="0"
+    class="link-hover link link-primary"
+    (click)="sortByDate()"
+    (keyup.enter)="sortByDate()"
+  >
+    date
+  </span>
+  <span
+    role="button"
+    tabindex="0"
+    class="link-hover link link-primary"
+    (click)="sortByCount()"
+    (keyup.enter)="sortByCount()"
+  >
+    count of views
+  </span>
   <span class="link-hover link link-primary">by word or sentence</span>
   <input type="text" class="input input-xs" />
 </div>
