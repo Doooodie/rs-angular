@@ -1,21 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { VideoItemsService } from 'app/shared/services/video-items.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SortButtonComponent } from 'app/header/sort-button/sort-button.component';
+import { SortOption } from 'app/shared/models/sort-status.model';
 
 @Component({
   selector: 'app-settings-options',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FontAwesomeModule, SortButtonComponent],
   templateUrl: './settings-options.component.html',
 })
 export class SettingsOptionsComponent {
-  constructor(private videoItemsService: VideoItemsService) {}
-
-  sortByDate() {
-    this.videoItemsService.sortItems('byDate');
-  }
-
-  sortByCount() {
-    this.videoItemsService.sortItems('byCount');
-  }
+  sortOptions: SortOption[] = [
+    { method: 'byDate', text: 'date' },
+    { method: 'byCount', text: 'count of views' },
+  ];
 }

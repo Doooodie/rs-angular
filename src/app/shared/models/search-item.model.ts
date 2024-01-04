@@ -1,18 +1,4 @@
-export interface SearchItem {
-  kind: string;
-  etag: string;
-  id: string;
-  snippet: Snippet;
-  statistics: {
-    viewCount: string;
-    likeCount: string;
-    dislikeCount: string;
-    favoriteCount: string;
-    commentCount: string;
-  };
-}
-
-export interface Snippet {
+interface Snippet {
   publishedAt: string;
   channelId: string;
   title: string;
@@ -36,14 +22,22 @@ export interface Snippet {
   defaultLanguage?: string;
 }
 
-export interface ThumbnailData {
+interface ThumbnailData {
   url: string;
   width: number;
   height: number;
 }
 
-export interface StatisticsData {
-  name: string;
-  value: string;
-  className: string;
+export interface SearchItem {
+  kind: string;
+  etag: string;
+  id: string;
+  snippet: Snippet;
+  statistics: {
+    viewCount: string;
+    likeCount: string;
+    dislikeCount: string;
+    favoriteCount: string;
+    commentCount: string;
+  };
 }

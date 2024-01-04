@@ -1,8 +1,10 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { faComments, faEye, faHeart, faHeartCrack } from '@fortawesome/free-solid-svg-icons';
 import { CounterComponent } from 'app/search/counter/counter.component';
+import { StatisticsData } from 'app/search/models/statistics-data.model';
 import { CustomButtonComponent } from 'app/shared/components/custom-button/custom-button.component';
-import { SearchItem, StatisticsData } from 'app/shared/models/search-item.model';
+import { SearchItem } from 'app/shared/models/search-item.model';
 
 @Component({
   selector: 'app-search-item',
@@ -15,7 +17,7 @@ export class SearchItemComponent implements OnInit {
   statsArr: StatisticsData[] = [];
 
   ngOnInit() {
-    const classList = ['fa-eye', 'fa-heart', 'fa-heart-crack', 'fa-comments'];
+    const classList = [faEye, faHeart, faHeartCrack, faComments];
     const statsWithoutFavorites: Partial<SearchItem['statistics']> = { ...this.item.statistics };
     delete statsWithoutFavorites.favoriteCount;
 
