@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { StatisticsData } from 'app/search/models/search-item.model';
+import { StatisticsData } from 'app/shared/models/search-item.model';
 
 @Component({
   selector: 'app-counter',

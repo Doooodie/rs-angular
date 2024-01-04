@@ -1,8 +1,8 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { CounterComponent } from 'app/search/counter/counter.component';
-import { SearchItem, StatisticsData } from 'app/search/models/search-item.model';
 import { CustomButtonComponent } from 'app/shared/components/custom-button/custom-button.component';
+import { SearchItem, StatisticsData } from 'app/shared/models/search-item.model';
 
 @Component({
   selector: 'app-search-item',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { SearchItem } from 'app/search/models/search-item.model';
-import { SearchResponse } from 'app/search/models/search-response.model';
+import { SearchItem } from 'app/shared/models/search-item.model';
+import { SearchResponse } from 'app/shared/models/search-response.model';
 import mockedData from 'assets/response.json';
 
 @Injectable({ providedIn: 'root' })
