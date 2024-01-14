@@ -6,9 +6,9 @@ import mockedData from 'assets/response.json';
 
 @Injectable({ providedIn: 'root' })
 export class VideoItemsService {
-  response: SearchResponse = mockedData;
+  private itemsQuery = '';
+  private response: SearchResponse = mockedData;
   items: SearchItem[] = [];
-  itemsQuery = '';
   sortStatus = signal<SortStatus>({
     byDate: SortValues.off,
     byCount: SortValues.off,
@@ -37,6 +37,7 @@ export class VideoItemsService {
   findItems(query: string) {
     this.itemsQuery = query;
     this.sortStatus.set({ byDate: SortValues.off, byCount: SortValues.off });
+    this.clearItems();
 
     if (query) {
       const filtered = this.response.items.filter((item) => {
@@ -44,8 +45,6 @@ export class VideoItemsService {
       });
 
       this.items.push(...filtered);
-    } else {
-      this.clearItems();
     }
   }
 
