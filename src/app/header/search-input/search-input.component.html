@@ -3,6 +3,7 @@
     type="text"
     class="input join-item input-bordered input-xs sm:input-sm md:input-md"
     (input)="changeQuery($event)"
+    (keyup.enter)="updateItems()"
   />
   <app-custom-button (click)="updateItems()">Search</app-custom-button>
 </div>
