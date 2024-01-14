@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, computed, Input } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons';
-import { SortKeys } from 'app/shared/models/sort-status.model';
+import { SortKeys, SortValues } from 'app/shared/models/sort-status.model';
 import { VideoItemsService } from 'app/shared/services/video-items.service';
 
 @Component({
@@ -14,18 +14,20 @@ import { VideoItemsService } from 'app/shared/services/video-items.service';
 export class SortButtonComponent {
   constructor(private videoItemsService: VideoItemsService) {}
 
-  faSort = faSort;
   @Input() sortKey: SortKeys = 'byCount';
+  faSort = computed(() => {
+    const sortStatus = this.videoItemsService.sortStatus()[this.sortKey];
 
-  sort(sortBy: SortKeys) {
-    this.videoItemsService.sortItems(sortBy);
-
-    if (this.videoItemsService.sortStatus[sortBy] === 'desc') {
-      this.faSort = faSortDown;
-    } else if (this.videoItemsService.sortStatus[sortBy] === 'asc') {
-      this.faSort = faSortUp;
-    } else if (this.videoItemsService.sortStatus[sortBy] === 'off') {
-      this.faSort = faSort;
+    if (sortStatus === SortValues.desc) {
+      return faSortDown;
+    } else if (sortStatus === SortValues.asc) {
+      return faSortUp;
     }
+
+    return faSort;
+  });
+
+  sort() {
+    this.videoItemsService.sortItems(this.sortKey);
   }
 }

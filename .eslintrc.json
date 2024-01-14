@@ -73,6 +73,7 @@
       "files": ["*.html"],
       "extends": ["plugin:@angular-eslint/template/all", "plugin:prettier/recommended"],
       "rules": {
+        "@angular-eslint/template/no-call-expression": ["error", { "allowList": ["faSort"] }],
         "@angular-eslint/template/i18n": ["off"],
         "prettier/prettier": [
           "error",

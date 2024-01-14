@@ -1,5 +1,11 @@
+export enum SortValues {
+  off = 'off',
+  asc = 'asc',
+  desc = 'desc',
+}
+
 export interface SortStatus {
-  byDate: 'off' | 'asc' | 'desc';
+  byDate: SortValues;
   byCount: SortStatus['byDate'];
 }
 

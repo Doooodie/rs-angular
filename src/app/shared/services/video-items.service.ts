@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { SearchItem } from 'app/shared/models/search-item.model';
 import { SearchResponse } from 'app/shared/models/search-response.model';
-import { SortKeys, SortStatus } from 'app/shared/models/sort-status.model';
+import { SortKeys, SortStatus, SortValues } from 'app/shared/models/sort-status.model';
 import mockedData from 'assets/response.json';
 
 @Injectable({ providedIn: 'root' })
@@ -9,17 +9,34 @@ export class VideoItemsService {
   response: SearchResponse = mockedData;
   items: SearchItem[] = [];
   itemsQuery = '';
-  sortStatus: SortStatus = {
-    byDate: 'off',
-    byCount: 'off',
-  };
+  sortStatus = signal<SortStatus>({
+    byDate: SortValues.off,
+    byCount: SortValues.off,
+  });
 
-  clearItems() {
+  private clearItems() {
     return this.items.splice(0);
+  }
+
+  private setSortStatus(sortBy: SortKeys) {
+    if (this.sortStatus()[sortBy] === SortValues.off) {
+      this.sortStatus.set({ ...this.sortStatus(), [sortBy]: SortValues.asc });
+    } else if (this.sortStatus()[sortBy] === SortValues.asc) {
+      this.sortStatus.set({ ...this.sortStatus(), [sortBy]: SortValues.desc });
+    } else if (this.sortStatus()[sortBy] === SortValues.desc) {
+      this.sortStatus.set({ ...this.sortStatus(), [sortBy]: SortValues.off });
+    }
+
+    if (sortBy === 'byDate') {
+      this.sortStatus.set({ ...this.sortStatus(), byCount: SortValues.off });
+    } else {
+      this.sortStatus.set({ ...this.sortStatus(), byDate: SortValues.off });
+    }
   }
 
   findItems(query: string) {
     this.itemsQuery = query;
+    this.sortStatus.set({ byDate: SortValues.off, byCount: SortValues.off });
 
     if (query) {
       const filtered = this.response.items.filter((item) => {
@@ -33,21 +50,9 @@ export class VideoItemsService {
   }
 
   sortItems(sortBy: SortKeys) {
-    if (this.sortStatus[sortBy] === 'off') {
-      this.sortStatus[sortBy] = 'asc';
-    } else if (this.sortStatus[sortBy] === 'asc') {
-      this.sortStatus[sortBy] = 'desc';
-    } else if (this.sortStatus[sortBy] === 'desc') {
-      this.sortStatus[sortBy] = 'off';
-    }
+    this.setSortStatus(sortBy);
 
-    if (sortBy === 'byDate') {
-      this.sortStatus.byCount = 'off';
-    } else {
-      this.sortStatus.byDate = 'off';
-    }
-
-    if (this.sortStatus[sortBy] === 'off') {
+    if (this.sortStatus()[sortBy] === SortValues.off) {
       this.clearItems();
       this.findItems(this.itemsQuery);
     } else {
@@ -60,9 +65,9 @@ export class VideoItemsService {
           const firstItemDate = Date.parse(firstItem.snippet.publishedAt);
           const secondItemDate = Date.parse(secondItem.snippet.publishedAt);
 
-          if (this.sortStatus.byDate === 'asc') {
+          if (this.sortStatus().byDate === SortValues.asc) {
             result = firstItemDate - secondItemDate;
-          } else if (this.sortStatus.byDate === 'desc') {
+          } else if (this.sortStatus().byDate === SortValues.desc) {
             result = secondItemDate - firstItemDate;
           }
         }
@@ -71,9 +76,9 @@ export class VideoItemsService {
           const firstItemCount = +firstItem.statistics.viewCount;
           const secondItemCount = +secondItem.statistics.viewCount;
 
-          if (this.sortStatus.byCount === 'asc') {
+          if (this.sortStatus().byCount === SortValues.asc) {
             result = firstItemCount - secondItemCount;
-          } else if (this.sortStatus.byCount === 'desc') {
+          } else if (this.sortStatus().byCount === SortValues.desc) {
             result = secondItemCount - firstItemCount;
           }
         }
