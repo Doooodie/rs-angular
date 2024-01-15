@@ -8,6 +8,7 @@ import mockedData from 'assets/response.json';
 export class VideoItemsService {
   private itemsQuery = '';
   private response: SearchResponse = mockedData;
+  filterQuery = signal('');
   items: SearchItem[] = [];
   sortStatus = signal<SortStatus>({
     byDate: SortValues.off,
@@ -37,6 +38,7 @@ export class VideoItemsService {
   findItems(query: string) {
     this.itemsQuery = query;
     this.sortStatus.set({ byDate: SortValues.off, byCount: SortValues.off });
+    this.filterQuery.set('');
     this.clearItems();
 
     if (query) {

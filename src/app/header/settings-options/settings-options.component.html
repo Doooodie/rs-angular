@@ -3,6 +3,5 @@
   @for (item of sortOptions; track item.method) {
     <app-sort-button [sortKey]="item.method">{{ item.text }}</app-sort-button>
   }
-  <span class="link-hover link link-primary">by word or sentence</span>
-  <input type="text" class="input input-xs" />
+  <app-filter-input />
 </div>
