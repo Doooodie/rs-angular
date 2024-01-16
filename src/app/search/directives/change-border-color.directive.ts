@@ -1,4 +1,5 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { DateBorderColors } from 'app/search/models/date-border-colors';
 
 @Directive({
   selector: '[appChangeBorderColor]',
@@ -7,7 +8,7 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 export class ChangeBorderColorDirective implements OnInit {
   constructor(private element: ElementRef<HTMLDivElement>) {}
 
-  @Input() appChangeBorderColor = '';
+  @Input() appChangeBorderColor = DateBorderColors.error;
 
   private setClassByDate() {
     const now = new Date(2019, 9, 29, 16, 0, 14); // use past date for mocked data
@@ -18,13 +19,13 @@ export class ChangeBorderColorDirective implements OnInit {
     const diff = new Date(+now - +publishedAt);
 
     if (diff < week) {
-      this.appChangeBorderColor = 'border-info';
+      this.appChangeBorderColor = DateBorderColors.info;
     } else if (diff < month) {
-      this.appChangeBorderColor = 'border-success';
+      this.appChangeBorderColor = DateBorderColors.success;
     } else if (diff < halfYear) {
-      this.appChangeBorderColor = 'border-warning';
+      this.appChangeBorderColor = DateBorderColors.warning;
     } else {
-      this.appChangeBorderColor = 'border-error';
+      this.appChangeBorderColor = DateBorderColors.error;
     }
   }
 
