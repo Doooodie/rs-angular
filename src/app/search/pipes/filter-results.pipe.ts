@@ -9,14 +9,6 @@ export class FilterResultsPipe implements PipeTransform {
   transform(items: SearchItem[], query: string) {
     if (!query) return items;
 
-    const result = [];
-
-    const filtered = items.filter((item) => {
-      return item.snippet.title.toLowerCase().includes(query) && item;
-    });
-
-    result.push(...filtered);
-
-    return result;
+    return items.filter((item) => item.snippet.title.toLowerCase().includes(query.toLowerCase()));
   }
 }
