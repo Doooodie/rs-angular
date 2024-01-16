@@ -20,13 +20,16 @@ export class VideoItemsService {
   }
 
   private setSortStatus(sortBy: SortKeys) {
-    if (this.sortStatus()[sortBy] === SortValues.off) {
-      this.sortStatus.set({ ...this.sortStatus(), [sortBy]: SortValues.asc });
-    } else if (this.sortStatus()[sortBy] === SortValues.asc) {
-      this.sortStatus.set({ ...this.sortStatus(), [sortBy]: SortValues.desc });
-    } else if (this.sortStatus()[sortBy] === SortValues.desc) {
-      this.sortStatus.set({ ...this.sortStatus(), [sortBy]: SortValues.off });
-    }
+    const sortStatusMap = {
+      [SortValues.off]: SortValues.asc,
+      [SortValues.asc]: SortValues.desc,
+      [SortValues.desc]: SortValues.off,
+    };
+
+    this.sortStatus.set({
+      ...this.sortStatus(),
+      [sortBy]: sortStatusMap[this.sortStatus()[sortBy]],
+    });
 
     if (sortBy === 'byDate') {
       this.sortStatus.set({ ...this.sortStatus(), byCount: SortValues.off });
