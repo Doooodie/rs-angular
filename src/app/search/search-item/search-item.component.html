@@ -1,1 +1,22 @@
-<p>search-item works!</p>,
+<figure>
+  <img
+    width="1280"
+    height="720"
+    priority
+    [ngSrc]="item.snippet.thumbnails.maxres.url"
+    [alt]="item.snippet.title"
+  />
+</figure>
+<div class="card-body items-center justify-around">
+  <h2 class="card-title text-sm sm:text-base">{{ item.snippet.title }}</h2>
+  <div class="divider"></div>
+  <div class="flex flex-wrap justify-center gap-2">
+    @for (statistics of statsArr; track statistics.name) {
+      <app-counter [statistics]="statistics" />
+    }
+  </div>
+  <div class="divider"></div>
+  <div class="card-actions">
+    <app-custom-button>More...</app-custom-button>
+  </div>
+</div>

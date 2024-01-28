@@ -1,0 +1,10 @@
+<div
+  role="button"
+  tabindex="0"
+  class="link-hover link link-primary flex select-none gap-1"
+  (click)="sort()"
+  (keyup.enter)="sort()"
+>
+  <span><ng-content /></span>
+  <fa-icon [icon]="faSort()" />
+</div>

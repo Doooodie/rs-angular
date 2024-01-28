@@ -1,11 +1,28 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { LogoComponent } from './logo/logo.component';
+import { ProfileButtonComponent } from './profile-button/profile-button.component';
+import { SearchInputComponent } from './search-input/search-input.component';
+import { SettingsButtonComponent } from './settings-button/settings-button.component';
+import { SettingsOptionsComponent } from './settings-options/settings-options.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    LogoComponent,
+    SearchInputComponent,
+    ProfileButtonComponent,
+    SettingsButtonComponent,
+    SettingsOptionsComponent,
+  ],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  showFilters = false;
+
+  toggleFilters() {
+    this.showFilters = !this.showFilters;
+  }
+}

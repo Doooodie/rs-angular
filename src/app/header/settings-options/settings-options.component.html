@@ -1,0 +1,7 @@
+<div class="navbar flex-wrap justify-center gap-3">
+  <span>Sorting by:</span>
+  @for (item of sortOptions; track item.method) {
+    <app-sort-button [sortKey]="item.method">{{ item.text }}</app-sort-button>
+  }
+  <app-filter-input />
+</div>

@@ -1,8 +1,10 @@
 {
+  "files.associations": { "*.css": "tailwindcss" },
   "angular-schematics.schematicsDefaultOptions": {
     "angular-*": {
-      "style": "scss",
-      "externalTemplate": true
+      "style": "css",
+      "externalTemplate": true,
+      "skipStyle": true
     },
     "angular-component": {
       "skipChangeDetectionOnPush": true

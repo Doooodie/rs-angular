@@ -1,0 +1,9 @@
+<div class="flex gap-1">
+  <span class="text-primary">by word or sentence</span>
+  <input
+    type="text"
+    class="input input-xs"
+    (input)="changeQuery($event)"
+    (keyup.enter)="updateQuery()"
+  />
+</div>
