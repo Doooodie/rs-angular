@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
-import { DateBorderColors } from 'app/search/models/date-border-colors.model';
+import { DateBorderColors } from 'app/youtube/models/date-border-colors.model';
 
 @Directive({
   selector: '[appChangeBorderColor]',

@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, computed, Input } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons';
+import { VideoItemsService } from 'app/core/services/video-items.service';
 import { SortKeys, SortValues } from 'app/shared/models/sort-status.model';
-import { VideoItemsService } from 'app/shared/services/video-items.service';
 
 @Component({
   selector: 'app-sort-button',

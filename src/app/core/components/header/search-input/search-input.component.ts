@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { VideoItemsService } from 'app/core/services/video-items.service';
 import { CustomButtonComponent } from 'app/shared/components/custom-button/custom-button.component';
-import { VideoItemsService } from 'app/shared/services/video-items.service';
 
 @Component({
   selector: 'app-search-input',

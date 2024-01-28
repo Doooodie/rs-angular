@@ -1,10 +1,10 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { faComments, faEye, faHeart, faHeartCrack } from '@fortawesome/free-solid-svg-icons';
-import { CounterComponent } from 'app/search/counter/counter.component';
-import { StatisticsData } from 'app/search/models/statistics-data.model';
 import { CustomButtonComponent } from 'app/shared/components/custom-button/custom-button.component';
 import { SearchItem } from 'app/shared/models/search-item.model';
+import { CounterComponent } from 'app/youtube/components/counter/counter.component';
+import { StatisticsData } from 'app/youtube/models/statistics-data.model';
 
 @Component({
   selector: 'app-search-item',

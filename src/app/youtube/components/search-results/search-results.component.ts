@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed } from '@angular/core';
-import { ChangeBorderColorDirective } from 'app/search/directives/change-border-color.directive';
-import { FilterResultsPipe } from 'app/search/pipes/filter-results.pipe';
-import { SearchItemComponent } from 'app/search/search-item/search-item.component';
+import { VideoItemsService } from 'app/core/services/video-items.service';
 import { SearchItem } from 'app/shared/models/search-item.model';
-import { VideoItemsService } from 'app/shared/services/video-items.service';
+import { SearchItemComponent } from 'app/youtube/components/search-item/search-item.component';
+import { ChangeBorderColorDirective } from 'app/youtube/directives/change-border-color.directive';
+import { FilterResultsPipe } from 'app/youtube/pipes/filter-results.pipe';
 
 @Component({
   selector: 'app-search-results',
