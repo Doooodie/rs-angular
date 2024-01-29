@@ -10,9 +10,9 @@ import { FilterResultsPipe } from 'app/youtube/pipes/filter-results.pipe';
   selector: 'app-search-results',
   standalone: true,
   imports: [CommonModule, SearchItemComponent, ChangeBorderColorDirective, FilterResultsPipe],
-  templateUrl: './search-results.component.html',
+  templateUrl: './youtube.component.html',
 })
-export class SearchResultsComponent {
+export class YoutubeComponent {
   constructor(private videoItemsService: VideoItemsService) {}
 
   items: SearchItem[] = this.videoItemsService.items;
