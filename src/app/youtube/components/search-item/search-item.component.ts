@@ -1,5 +1,6 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { faComments, faEye, faHeart, faHeartCrack } from '@fortawesome/free-solid-svg-icons';
 import { CustomButtonComponent } from 'app/shared/components/custom-button/custom-button.component';
 import { SearchItem } from 'app/shared/models/search-item.model';
@@ -9,7 +10,7 @@ import { StatisticsData } from 'app/youtube/models/statistics-data.model';
 @Component({
   selector: 'app-search-item',
   standalone: true,
-  imports: [CommonModule, CounterComponent, NgOptimizedImage, CustomButtonComponent],
+  imports: [CommonModule, CounterComponent, NgOptimizedImage, CustomButtonComponent, RouterLink],
   templateUrl: './search-item.component.html',
 })
 export class SearchItemComponent implements OnInit {

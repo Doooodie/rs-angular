@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FaConfig } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from './core/pages/header/header.component';
-import { YoutubeComponent } from './youtube/pages/youtube.component';
+import { YoutubeComponent } from './youtube/pages/youtube/youtube.component';
 
 @Component({
   selector: 'app-root',
